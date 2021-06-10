@@ -6,5 +6,8 @@
     ],
     "meteor": {
         "enabled": false
+    },
+    "lockFileMaintenance": {
+        "enabled": true
     }
 }
