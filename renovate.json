@@ -12,6 +12,11 @@
     },
     "dependencyDashboard": true,
     "stabilityDays": 7,
+    "vulnerabilityAlerts": {
+        "labels": [
+            "security"
+        ]
+    },
     "packageRules": [
         {
             "description": "Require dashboard approval for major updates",
