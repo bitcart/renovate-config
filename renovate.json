@@ -9,5 +9,27 @@
     },
     "lockFileMaintenance": {
         "enabled": true
-    }
+    },
+    "dependencyDashboard": true,
+    "stabilityDays": 7,
+    "packageRules": [
+        {
+            "description": "Require dashboard approval for major updates",
+            "matchUpdateTypes": [
+                "major"
+            ],
+            "dependencyDashboardApproval": true
+        },
+        {
+            "description": "Group prettier packages",
+            "matchPackageNames": [
+                "prettier"
+            ],
+            "matchPackagePatterns": [
+                "^@prettier\\/",
+                "^prettier-plugin-"
+            ],
+            "groupName": "prettier packages"
+        }
+    ]
 }
