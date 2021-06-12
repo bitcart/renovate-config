@@ -11,6 +11,9 @@
     "lockFileMaintenance": {
         "enabled": true
     },
+    "constraints": {
+        "python": "3.7"
+    },
     "dependencyDashboard": true,
     "stabilityDays": 7,
     "vulnerabilityAlerts": {
