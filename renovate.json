@@ -30,6 +30,25 @@
             "dependencyDashboardApproval": true
         },
         {
+            "description": "Require approval for new vuetify release series",
+            "dependencyDashboardApproval": true,
+            "matchPackageNames": [
+                "vuetify"
+            ],
+            "matchUpdateTypes": [
+                "major",
+                "minor"
+            ]
+        },
+        {
+            "description": "Require approval for every nuxt update",
+            "dependencyDashboardApproval": true,
+            "matchPackageNames": [
+                "nuxt",
+                "nuxt-start"
+            ]
+        },
+        {
             "description": "Group prettier packages",
             "matchPackageNames": [
                 "prettier"
