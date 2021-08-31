@@ -43,10 +43,10 @@
         {
             "description": "Require approval for every nuxt update",
             "dependencyDashboardApproval": true,
-            "matchPackageNames": [
-                "nuxt",
-                "nuxt-start"
-            ]
+            "matchPackagePatterns": [
+                "nuxt"
+            ],
+            "groupName": "nuxt packages"
         },
         {
             "description": "Group prettier packages",
