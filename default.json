@@ -21,6 +21,9 @@
             "security"
         ]
     },
+    "ignoreDeps": [
+        "bitcartcc/bitcartcc-shared"
+    ],
     "packageRules": [
         {
             "description": "Require dashboard approval for major updates",
