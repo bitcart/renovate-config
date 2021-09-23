@@ -21,10 +21,15 @@
             "security"
         ]
     },
-    "ignoreDeps": [
-        "bitcartcc/bitcartcc-shared"
-    ],
     "packageRules": [
+        {
+            "description": "Don't update bitcartcc orb",
+            "matchDatasources": ["orb"],
+            "matchPackageNames": [
+                "bitcartcc"
+            ],
+            "enabled": false
+        },
         {
             "description": "Require dashboard approval for major updates",
             "matchUpdateTypes": [
