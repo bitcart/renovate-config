@@ -17,54 +17,42 @@
     "dependencyDashboard": true,
     "stabilityDays": 7,
     "vulnerabilityAlerts": {
-        "labels": [
-            "security"
-        ]
+        "labels": ["security"]
     },
     "packageRules": [
         {
             "description": "Don't update bitcartcc orb",
             "matchDatasources": ["orb"],
-            "matchPackageNames": [
-                "bitcartcc"
-            ],
+            "matchPackageNames": ["bitcartcc"],
             "enabled": false
         },
         {
             "description": "Require dashboard approval for major updates",
-            "matchUpdateTypes": [
-                "major"
-            ],
+            "matchUpdateTypes": ["major"],
             "dependencyDashboardApproval": true
         },
         {
             "description": "Require approval for new vuetify release series",
             "dependencyDashboardApproval": true,
-            "matchPackageNames": [
-                "vuetify"
-            ],
-            "matchUpdateTypes": [
-                "major",
-                "minor"
-            ]
+            "matchPackageNames": ["vuetify"],
+            "matchUpdateTypes": ["major", "minor"]
         },
         {
             "description": "Require approval for every nuxt update",
             "dependencyDashboardApproval": true,
-            "matchPackagePatterns": [
-                "nuxt"
-            ],
+            "matchPackagePatterns": ["nuxt"],
             "groupName": "nuxt packages"
         },
         {
+            "description": "Require approval for go cli package as it updates too often",
+            "matchDatasources": ["go"],
+            "matchPackageNames": ["github.com/urfave/cli/v2"],
+            "dependencyDashboardApproval": true
+        },
+        {
             "description": "Group prettier packages",
-            "matchPackageNames": [
-                "prettier"
-            ],
-            "matchPackagePatterns": [
-                "^@prettier\\/",
-                "^prettier-plugin-"
-            ],
+            "matchPackageNames": ["prettier"],
+            "matchPackagePatterns": ["^@prettier\\/", "^prettier-plugin-"],
             "groupName": "prettier packages"
         }
     ]
