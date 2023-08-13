@@ -21,9 +21,9 @@
     },
     "packageRules": [
         {
-            "description": "Don't update bitcartcc orb",
+            "description": "Don't update bitcart orb",
             "matchDatasources": ["orb"],
-            "matchPackageNames": ["bitcartcc"],
+            "matchPackageNames": ["bitcart"],
             "enabled": false
         },
         {

@@ -1,4 +1,4 @@
-# BitcartCC Renovate config
+# Bitcart Renovate config
 
 This repository contains configuration defaults shared between all our repositories using Renovate.
 
