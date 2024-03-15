@@ -12,7 +12,7 @@
         "enabled": true
     },
     "constraints": {
-        "python": "3.8"
+        "python": "3.9"
     },
     "dependencyDashboard": true,
     "stabilityDays": 7,
