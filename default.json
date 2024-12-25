@@ -5,6 +5,7 @@
         ":preserveSemverRanges",
         ":prHourlyLimitNone"
     ],
+    "recreateWhen": "never",
     "lockFileMaintenance": {
         "enabled": true
     },
