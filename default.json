@@ -1,13 +1,10 @@
 {
     "extends": [
-        "config:base",
+        "config:recommended",
         "group:allNonMajor",
         ":preserveSemverRanges",
         ":prHourlyLimitNone"
     ],
-    "meteor": {
-        "enabled": false
-    },
     "lockFileMaintenance": {
         "enabled": true
     },
@@ -18,6 +15,9 @@
     "stabilityDays": 7,
     "vulnerabilityAlerts": {
         "labels": ["security"]
+    },
+    "pre-commit": {
+        "enabled": true
     },
     "packageRules": [
         {
