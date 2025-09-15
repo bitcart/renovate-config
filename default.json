@@ -10,7 +10,7 @@
         "enabled": true
     },
     "constraints": {
-        "python": ">=3.11,<3.12"
+        "python": ">=3.12,<3.13"
     },
     "dependencyDashboard": true,
     "stabilityDays": 7,
