@@ -17,6 +17,7 @@
     "vulnerabilityAlerts": {
         "labels": ["security"]
     },
+    "osvVulnerabilityAlerts": true,
     "pre-commit": {
         "enabled": true
     },
