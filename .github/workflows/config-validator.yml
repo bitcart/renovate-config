@@ -15,6 +15,7 @@ jobs:
         with:
           node-version: 24
           cache: npm
+          cache-dependency-path: "**/.github/workflows/*.yml"
       - uses: suzuki-shunsuke/github-action-renovate-config-validator@v2.0.0
         with:
           node-version: "none"
