@@ -8,7 +8,6 @@
     ],
     "timezone": "UTC",
     "recreateWhen": "never",
-    "rebaseWhen": "behind-base-branch",
     "lockFileMaintenance": {
         "enabled": true
     },
