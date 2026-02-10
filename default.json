@@ -3,9 +3,12 @@
         "config:recommended",
         "group:allNonMajor",
         ":preserveSemverRanges",
-        ":prHourlyLimitNone"
+        ":prHourlyLimitNone",
+        "schedule:daily"
     ],
+    "timezone": "UTC",
     "recreateWhen": "never",
+    "rebaseWhen": "behind-base-branch",
     "lockFileMaintenance": {
         "enabled": true
     },
