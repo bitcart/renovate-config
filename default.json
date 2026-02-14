@@ -29,6 +29,11 @@
   },
   "packageRules": [
     {
+      "internalChecksFilter": "strict",
+      "matchDatasources": ["npm"],
+      "minimumReleaseAge": "7 days"
+    },
+    {
       "description": "Don't update bitcart orb",
       "matchDatasources": ["orb"],
       "matchPackageNames": ["bitcart"],
