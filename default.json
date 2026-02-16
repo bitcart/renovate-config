@@ -17,6 +17,7 @@
   },
   "updateNotScheduled": false,
   "minimumReleaseAge": "7 days",
+  "commitBodyTable": true,
   "vulnerabilityAlerts": {
     "enabled": true,
     "labels": ["security"]
