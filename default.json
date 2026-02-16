@@ -8,7 +8,7 @@
     ":maintainLockFilesWeekly",
     ":preserveSemverRanges",
     ":prHourlyLimitNone",
-    "schedule:daily"
+    "schedule:weekly"
   ],
   "timezone": "UTC",
   "recreateWhen": "never",

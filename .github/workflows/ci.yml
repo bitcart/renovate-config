@@ -9,12 +9,6 @@ on:
 permissions: {}
 
 jobs:
-  zizmor:
-    name: zizmor
-    uses: bitcart/bitcart-actions/.github/workflows/zizmor-audit.yml@master
-    permissions:
-      security-events: write
-
   validate:
     runs-on: ubuntu-latest
 
@@ -30,3 +24,9 @@ jobs:
             ghcr.io/renovatebot/renovate:latest \
             renovate-config-validator \
             --strict default.json renovate.json
+
+  zizmor:
+    name: zizmor
+    uses: bitcart/bitcart-actions/.github/workflows/zizmor-audit.yml@master
+    permissions:
+      security-events: write
