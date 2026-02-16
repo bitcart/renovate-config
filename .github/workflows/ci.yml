@@ -29,4 +29,4 @@ jobs:
             -w /workspace \
             ghcr.io/renovatebot/renovate:latest \
             renovate-config-validator \
-            "--strict default.json renovate.json"
+            --strict default.json renovate.json
