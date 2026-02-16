@@ -30,6 +30,10 @@
   },
   "packageRules": [
     {
+      "matchUpdateTypes": ["lockFileMaintenance"],
+      "minimumReleaseAgeBehaviour": "timestamp-optional"
+    },
+    {
       "internalChecksFilter": "strict",
       "matchDatasources": ["npm"],
       "minimumReleaseAge": "7 days"
