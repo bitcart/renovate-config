@@ -11,19 +11,15 @@ permissions: {}
 jobs:
   validate:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/renovatebot/renovate:latest
 
     steps:
       - uses: actions/checkout@v6
         with:
           persist-credentials: false
 
-      - run: |
-          docker run --rm -v \
-            "${GITHUB_WORKSPACE}:/workspace:ro" \
-            -w /workspace \
-            ghcr.io/renovatebot/renovate:latest \
-            renovate-config-validator \
-            --strict default.json renovate.json
+      - run: renovate-config-validator --strict default.json renovate.json
 
   zizmor:
     name: zizmor
