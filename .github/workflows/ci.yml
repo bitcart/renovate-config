@@ -6,7 +6,12 @@ on:
       - master
   pull_request:
 
-permissions: {}
+concurrency:
+  group: ${{ github.workflow_ref }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   validate:
@@ -29,4 +34,5 @@ jobs:
     name: zizmor
     uses: bitcart/bitcart-actions/.github/workflows/zizmor-audit.yml@master
     permissions:
+      contents: read
       security-events: write
