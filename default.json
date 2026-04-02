@@ -40,6 +40,11 @@
       "minimumReleaseAge": "7 days"
     },
     {
+      "abandonmentThreshold": null,
+      "matchDatasources": ["npm"],
+      "matchPackageNames": ["class-variance-authority"]
+    },
+    {
       "description": "Don't update bitcart orb",
       "matchDatasources": ["orb"],
       "matchPackageNames": ["bitcart"],
