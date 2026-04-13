@@ -77,6 +77,13 @@
       "description": "Group prettier packages",
       "matchPackageNames": ["prettier", "@prettier/*", "prettier-plugin-*"],
       "groupName": "prettier packages"
+    },
+    {
+      "description": "Forgejo doesn't support actions/download-artifact and actions/upload-artifact above v3",
+      "matchManagers": ["github-actions"],
+      "matchFileNames": [".forgejo/**"],
+      "matchPackageNames": ["actions/download-artifact", "actions/upload-artifact"],
+      "enabled": false
     }
   ],
   "postUpdateOptions": ["gomodTidy", "pnpmDedupe"]
