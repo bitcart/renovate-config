@@ -40,6 +40,11 @@
       "minimumReleaseAge": "7 days"
     },
     {
+      "description": "Skip minimum release age for oxc tools",
+      "matchPackageNames": ["oxfmt", "oxlint", "oxlint-tsgolint"],
+      "minimumReleaseAge": null
+    },
+    {
       "abandonmentThreshold": null,
       "matchDatasources": ["npm"],
       "matchPackageNames": ["class-variance-authority"]
@@ -82,7 +87,10 @@
       "description": "Forgejo doesn't support actions/download-artifact and actions/upload-artifact above v3",
       "matchManagers": ["github-actions"],
       "matchFileNames": [".forgejo/**"],
-      "matchPackageNames": ["actions/download-artifact", "actions/upload-artifact"],
+      "matchPackageNames": [
+        "actions/download-artifact",
+        "actions/upload-artifact"
+      ],
       "enabled": false
     }
   ],
