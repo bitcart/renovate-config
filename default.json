@@ -20,7 +20,7 @@
   "commitBodyTable": true,
   "vulnerabilityAlerts": {
     "enabled": true,
-    "labels": ["security"]
+    "labels": ["type: security"]
   },
   "osvVulnerabilityAlerts": true,
   "pre-commit": {
