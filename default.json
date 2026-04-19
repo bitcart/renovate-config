@@ -1,28 +1,43 @@
 {
   "extends": [
+    // we use almost the full `config:best-practices` preset
+    // but we don't enable `docker:pinDigests` because we have many self-hosted consumers who would be forced to update each week
+    // also `:pinDevDependencies` is disabled as it's too npm-specific, we have packageRules for that
     "config:recommended",
+    // TODO: enable once renovate migrates setup-uv action to v8
+    // "helpers:pinGitHubActionDigests",
     ":configMigration",
     "abandonments:recommended",
     "security:minimumReleaseAgeNpm",
     ":maintainLockFilesWeekly",
+    // to massively reduce noice, we only get 2 PRs: update all non-major deps + lockfile maintenance
     "group:allNonMajor",
+    // sets rangeStrategy to replace globally, overridden by package rules
     ":preserveSemverRanges",
     ":prHourlyLimitNone",
+    // run once a week to reduce noise. Every monday we deal with renovate and forget about it for the rest of the week
     "schedule:weekly"
   ],
   "timezone": "UTC",
+  // setting it to any other value made renovate update already open PRs even outside schedule
   "recreateWhen": "never",
+  // we update the constraint when our global minimum python changes
   "constraints": {
     "python": ">=3.12,<3.13"
   },
+  // absolutely no activity outside of schedule, unless we manually trigger it or it's a security update
   "updateNotScheduled": false,
+  // supply chain security, note that it must also be configured in each package manager using their own implementations to the same value
   "minimumReleaseAge": "7 days",
+  // useful table of changed dependencies in renovate commits
   "commitBodyTable": true,
+  // security updates bypass any schedules
   "vulnerabilityAlerts": {
     "enabled": true,
     "labels": ["type: security"]
   },
   "osvVulnerabilityAlerts": true,
+  // pre-commit is not enabled by default in renovate
   "pre-commit": {
     "enabled": true
   },
@@ -45,7 +60,7 @@
       "minimumReleaseAge": "7 days"
     },
     {
-      "description": "Skip minimum release age for oxc tools",
+      "description": "Skip minimum release age for oxc tools (cutting edge)",
       "matchPackageNames": ["oxfmt", "oxlint", "oxfmt-*", "oxlint-*"],
       "minimumReleaseAge": null
     },
