@@ -31,6 +31,8 @@
   "minimumReleaseAge": "7 days",
   // useful table of changed dependencies in renovate commits
   "commitBodyTable": true,
+  // as per our labels convention
+  "labels": ["type: chore"],
   // security updates bypass any schedules
   "vulnerabilityAlerts": {
     "enabled": true,
@@ -41,7 +43,18 @@
   "pre-commit": {
     "enabled": true
   },
+  // we might explore it in the future, explicitly disabling it for now
+  "semanticCommits": "disabled",
+  // technically it is the default, but just to be sure
+  "internalChecksFilter": "strict",
+  // those are too noisy
+  "suppressNotifications": ["prEditedNotification"],
   "packageRules": [
+    {
+      "description": "We set only the lower bound for python deps, so we want to update lockfile and still see changelogs",
+      "matchManagers": ["pep621"],
+      "rangeStrategy": "update-lockfile"
+    },
     {
       "description": "Lockfile maintenance doesn't support minimumReleaseAge, but our package managers validate it themselves",
       "matchUpdateTypes": ["lockFileMaintenance"],
@@ -49,13 +62,11 @@
     },
     {
       "description": "All npm package updates must wait for 7 days to align with pnpm minimumReleaseAge",
-      "internalChecksFilter": "strict",
       "matchDatasources": ["npm"],
       "minimumReleaseAge": "7 days"
     },
     {
       "description": "All Python package updates must wait for 7 days to align with uv exclude-newer",
-      "internalChecksFilter": "strict",
       "matchDatasources": ["pypi"],
       "minimumReleaseAge": "7 days"
     },
