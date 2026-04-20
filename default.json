@@ -122,7 +122,7 @@
       "ignoreUnstable": false,
       // pep440 "replace" strategy miscalculates bounds for b-suffixed pre-releases (produces impossible `>=0.62,<0.62`)
       // TODO: report to renovate
-      "rangeStrategy": "bump"
+      "rangeStrategy": "pin"
     },
     {
       "description": "Forgejo doesn't support actions/download-artifact and actions/upload-artifact above v3",
