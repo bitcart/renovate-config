@@ -110,6 +110,16 @@
       "groupName": "prettier packages"
     },
     {
+      // opentelemetry-distro and others are classified as "major" while e.g. sdk as "minor"
+      "description": "Group all OpenTelemetry python packages from both upstream monorepos",
+      "extends": [
+        "monorepo:opentelemetry-python",
+        "monorepo:opentelemetry-python-contrib"
+      ],
+      "groupName": "opentelemetry packages",
+      "separateMajorMinor": false
+    },
+    {
       "description": "Forgejo doesn't support actions/download-artifact and actions/upload-artifact above v3",
       "matchManagers": ["github-actions"],
       "matchFileNames": [".forgejo/**"],
