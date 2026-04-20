@@ -119,10 +119,7 @@
       "groupName": "opentelemetry packages",
       "separateMajorMinor": false,
       // opentelemetry-distro/-instrumentation ship as pep440 pre-releases
-      "ignoreUnstable": false,
-      // pep440 "replace" strategy miscalculates bounds for b-suffixed pre-releases (produces impossible `>=0.62,<0.62`)
-      // TODO: report to renovate
-      "rangeStrategy": "pin"
+      "ignoreUnstable": false
     },
     {
       "description": "Forgejo doesn't support actions/download-artifact and actions/upload-artifact above v3",
