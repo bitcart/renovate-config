@@ -105,8 +105,9 @@
       "dependencyDashboardApproval": true
     },
     {
-      "description": "Group prettier packages",
+      "description": "Group prettier packages on major bumps",
       "matchPackageNames": ["prettier", "@prettier/*", "prettier-plugin-*"],
+      "matchUpdateTypes": ["major"],
       "groupName": "prettier packages"
     },
     {
