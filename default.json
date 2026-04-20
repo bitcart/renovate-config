@@ -117,7 +117,9 @@
         "monorepo:opentelemetry-python-contrib"
       ],
       "groupName": "opentelemetry packages",
-      "separateMajorMinor": false
+      "separateMajorMinor": false,
+      // opentelemetry-distro/-instrumentation ship as pep440 pre-releases
+      "ignoreUnstable": false
     },
     {
       "description": "Forgejo doesn't support actions/download-artifact and actions/upload-artifact above v3",
