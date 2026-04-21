@@ -67,8 +67,14 @@
       "minimumReleaseAge": "7 days"
     },
     {
-      "description": "Skip minimum release age for oxc tools (cutting edge)",
-      "matchPackageNames": ["oxfmt", "oxlint", "oxfmt-*", "oxlint-*"],
+      "description": "Skip minimum release age for cutting edge tools we deliberately use and update often",
+      "matchPackageNames": [
+        "oxfmt",
+        "oxlint",
+        "oxfmt-*",
+        "oxlint-*",
+        "@base-ui/*"
+      ],
       "minimumReleaseAge": null
     },
     {
