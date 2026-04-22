@@ -4,7 +4,7 @@
     // but we don't enable `docker:pinDigests` because we have many self-hosted consumers who would be forced to update each week
     // also `:pinDevDependencies` is disabled as it's too npm-specific, we have packageRules for that
     "config:recommended",
-    "helpers:pinGitHubActionDigests",
+    "helpers:pinGitHubActionDigestsToSemver",
     ":configMigration",
     "abandonments:recommended",
     "security:minimumReleaseAgeNpm",
@@ -120,6 +120,18 @@
         "actions/upload-artifact"
       ],
       "enabled": false
+    },
+    {
+      "description": "Don't pin our reusable bitcart/bitcart-actions for ease of propagation across all repositories",
+      "matchManagers": ["github-actions"],
+      "matchPackageNames": ["bitcart/bitcart-actions/**"],
+      "pinDigests": false
+    },
+    {
+      "description": "Fold github-actions digest-only bumps into the weekly non-major PR",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["digest"],
+      "extends": ["group:allNonMajor"]
     }
   ],
   "postUpdateOptions": ["gomodTidy", "pnpmDedupe"]
