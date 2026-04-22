@@ -9,6 +9,8 @@
     "abandonments:recommended",
     "security:minimumReleaseAgeNpm",
     ":maintainLockFilesWeekly",
+    // to massively reduce noise, we only get 2 PRs: update all non-major deps + lockfile maintenance
+    "group:allNonMajor",
     // sets rangeStrategy to replace globally, overridden by package rules
     ":preserveSemverRanges",
     ":prHourlyLimitNone",
@@ -47,13 +49,6 @@
   // those are too noisy
   "suppressNotifications": ["prEditedNotification"],
   "packageRules": [
-    // to massively reduce noice, we only get 2 PRs: update all non-major deps + lockfile maintenance
-    {
-      "groupName": "all non-major dependencies",
-      "groupSlug": "all-minor-patch",
-      "matchPackageNames": ["*"],
-      "matchUpdateTypes": ["minor", "patch", "digest"]
-    },
     {
       "description": "We set only the lower bound for python deps, so we want to update lockfile and still see changelogs",
       "matchManagers": ["pep621"],
@@ -62,6 +57,11 @@
     {
       "description": "Lockfile maintenance doesn't support minimumReleaseAge, but our package managers validate it themselves",
       "matchUpdateTypes": ["lockFileMaintenance"],
+      "minimumReleaseAge": null
+    },
+    {
+      "description": "pinDigest doesn't change a version, so no validation is needed",
+      "matchUpdateTypes": ["pinDigest"],
       "minimumReleaseAge": null
     },
     // this rule is used to override `security:minimumReleaseAgeNpm` default of 3 days
@@ -129,7 +129,7 @@
     {
       "description": "Don't pin our reusable bitcart/bitcart-actions for ease of propagation across all repositories",
       "matchManagers": ["github-actions"],
-      "matchPackageNames": ["bitcart/bitcart-actions/**"],
+      "matchPackageNames": ["bitcart/bitcart-actions"],
       "pinDigests": false
     }
   ],
