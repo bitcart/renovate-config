@@ -73,6 +73,7 @@
     },
     {
       "description": "Skip minimum release age for cutting edge tools we deliberately use and update often",
+      "matchDatasources": ["npm"],
       "matchPackageNames": [
         "oxfmt",
         "oxlint",
@@ -84,9 +85,9 @@
     },
     {
       "description": "The package is not abandoned, but feature-complete",
-      "abandonmentThreshold": null,
       "matchDatasources": ["npm"],
-      "matchPackageNames": ["class-variance-authority"]
+      "matchPackageNames": ["class-variance-authority"],
+      "abandonmentThreshold": null
     },
     {
       "description": "Require dashboard approval for major updates",
@@ -101,6 +102,7 @@
     },
     {
       "description": "Group prettier packages on major bumps",
+      "matchDatasources": ["npm"],
       "matchPackageNames": ["prettier", "@prettier/*", "prettier-plugin-*"],
       "matchUpdateTypes": ["major"],
       "groupName": "prettier packages"
