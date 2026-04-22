@@ -127,7 +127,7 @@
         "actions/download-artifact",
         "actions/upload-artifact"
       ],
-      "enabled": false
+      "allowedVersions": "<4"
     },
     {
       "description": "Don't pin our reusable bitcart/bitcart-actions for ease of propagation across all repositories",
