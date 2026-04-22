@@ -9,8 +9,6 @@
     "abandonments:recommended",
     "security:minimumReleaseAgeNpm",
     ":maintainLockFilesWeekly",
-    // to massively reduce noice, we only get 2 PRs: update all non-major deps + lockfile maintenance
-    "group:allNonMajor",
     // sets rangeStrategy to replace globally, overridden by package rules
     ":preserveSemverRanges",
     ":prHourlyLimitNone",
@@ -49,6 +47,13 @@
   // those are too noisy
   "suppressNotifications": ["prEditedNotification"],
   "packageRules": [
+    // to massively reduce noice, we only get 2 PRs: update all non-major deps + lockfile maintenance
+    {
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch",
+      "matchPackageNames": ["*"],
+      "matchUpdateTypes": ["minor", "patch", "digest"]
+    },
     {
       "description": "We set only the lower bound for python deps, so we want to update lockfile and still see changelogs",
       "matchManagers": ["pep621"],
@@ -126,12 +131,6 @@
       "matchManagers": ["github-actions"],
       "matchPackageNames": ["bitcart/bitcart-actions/**"],
       "pinDigests": false
-    },
-    {
-      "description": "Fold github-actions digest-only bumps into the weekly non-major PR",
-      "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["digest"],
-      "extends": ["group:allNonMajor"]
     }
   ],
   "postUpdateOptions": ["gomodTidy", "pnpmDedupe"]
