@@ -1,11 +1,12 @@
 {
   "extends": [
-    // we use almost the full `config:best-practices` preset
-    // but we don't enable `docker:pinDigests` because we have many self-hosted consumers who would be forced to update each week
-    // also `:pinDevDependencies` is disabled as it's too npm-specific, we have packageRules for that
+    // we use the full `config:best-practices` preset
+    // but we use `pinGitHubActionDigestsToSemver` to have more accurate updates tracking
     "config:recommended",
+    "docker:pinDigests",
     "helpers:pinGitHubActionDigestsToSemver",
     ":configMigration",
+    ":pinDevDependencies",
     "abandonments:recommended",
     "security:minimumReleaseAgeNpm",
     ":maintainLockFilesWeekly",
