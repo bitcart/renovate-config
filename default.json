@@ -4,8 +4,7 @@
     // but we don't enable `docker:pinDigests` because we have many self-hosted consumers who would be forced to update each week
     // also `:pinDevDependencies` is disabled as it's too npm-specific, we have packageRules for that
     "config:recommended",
-    // TODO: enable once renovate migrates setup-uv action to v8
-    // "helpers:pinGitHubActionDigests",
+    "helpers:pinGitHubActionDigests",
     ":configMigration",
     "abandonments:recommended",
     "security:minimumReleaseAgeNpm",
