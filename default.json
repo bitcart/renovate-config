@@ -98,6 +98,12 @@
       "abandonmentThreshold": null
     },
     {
+      "description": "The packages are not abandoned, but feature-complete",
+      "matchDatasources": ["pypi"],
+      "matchPackageNames": ["jinja2", "pyotp"],
+      "abandonmentThreshold": null
+    },
+    {
       "description": "Require dashboard approval for major updates",
       "matchUpdateTypes": ["major"],
       "dependencyDashboardApproval": true
