@@ -109,6 +109,17 @@
       "dependencyDashboardApproval": true
     },
     {
+      "description": "Disable major updates for dependency overrides",
+      "matchDepTypes": [
+        "pnpm-workspace.overrides",
+        "pnpm.overrides",
+        "overrides",
+        "resolutions"
+      ],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
       "description": "Require approval for go cli package as it updates too often",
       "matchDatasources": ["go"],
       "matchPackageNames": ["github.com/urfave/cli/v2"],
