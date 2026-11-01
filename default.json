@@ -161,5 +161,5 @@
       "pinDigests": false
     }
   ],
-  "postUpdateOptions": ["gomodTidy", "pnpmDedupe"]
+  "postUpdateOptions": ["gomodTidy", "gomodUpdateImportPaths", "pnpmDedupe"]
 }
