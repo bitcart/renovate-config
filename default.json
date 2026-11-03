@@ -56,6 +56,14 @@
       "rangeStrategy": "update-lockfile"
     },
     {
+      "description": "An upper bound on a python dep is deliberate, so an update past it waits for approval in its own PR instead of widening the range in the group",
+      "matchManagers": ["pep621"],
+      "matchCurrentValue": "/</",
+      "matchJsonata": ["newValue != currentValue"],
+      "dependencyDashboardApproval": true,
+      "groupName": null
+    },
+    {
       "description": "Python images follow constraints.python, which only applies to package managers, so both move together when our global minimum python changes",
       "matchDatasources": ["docker"],
       "matchPackageNames": ["python"],
