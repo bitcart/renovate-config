@@ -70,6 +70,20 @@
       "allowedVersions": "<3.13"
     },
     {
+      "description": "Our images are rebuilt on every release to pick up base image fixes",
+      "matchFileNames": [
+        "/(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$/",
+        "/(^|/)([Dd]ocker|[Cc]ontainer)file[^/]*$/"
+      ],
+      "pinDigests": false
+    },
+    {
+      "description": "Stay on nginx stable releases, which have an even minor version",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["nginx"],
+      "allowedVersions": "/^\\d+\\.\\d*[02468](\\.\\d+)?(-.+)?$/"
+    },
+    {
       "description": "Lockfile maintenance doesn't support minimumReleaseAge, but our package managers validate it themselves",
       "matchUpdateTypes": ["lockFileMaintenance"],
       "minimumReleaseAge": null
