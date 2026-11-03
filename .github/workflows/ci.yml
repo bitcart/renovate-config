@@ -7,11 +7,15 @@ on:
   pull_request:
 
 concurrency:
-  group: ${{ github.workflow_ref }}-${{ github.event.pull_request.number || github.run_id }}
+  group: ${{ github.workflow_ref }}-${{ github.event.pull_request.number || github.sha }}
   cancel-in-progress: true
 
 permissions:
   contents: read
+
+defaults:
+  run:
+    shell: bash
 
 jobs:
   validate:
@@ -23,13 +27,17 @@ jobs:
         with:
           persist-credentials: false
 
-      - run: |
+      - name: Validate Renovate config
+        env:
+          # renovate: datasource=docker depName=ghcr.io/renovatebot/renovate
+          RENOVATE_IMAGE: 'ghcr.io/renovatebot/renovate:44.186.4@sha256:2bae955368b05fa2da61d4c813b92251fde0abc59b3e488f2f2cb3672da76cc2'
+        run: |
           docker run --rm -v \
             "${GITHUB_WORKSPACE}:/workspace:ro" \
             -w /workspace \
-            ghcr.io/renovatebot/renovate:latest \
+            "$RENOVATE_IMAGE" \
             renovate-config-validator \
-            --strict default.json renovate.json
+            --strict default.json audit.json renovate.json
 
   workflows:
     name: workflows

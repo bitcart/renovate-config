@@ -56,9 +56,21 @@
       "rangeStrategy": "update-lockfile"
     },
     {
+      "description": "Python images follow constraints.python, which only applies to package managers, so both move together when our global minimum python changes",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["python"],
+      "allowedVersions": "<3.13"
+    },
+    {
       "description": "Lockfile maintenance doesn't support minimumReleaseAge, but our package managers validate it themselves",
       "matchUpdateTypes": ["lockFileMaintenance"],
       "minimumReleaseAge": null
+    },
+    {
+      "description": "uv lock --upgrade also takes in-range releases of direct deps, majors pending approval included, so we approve it right after merging the non-major PR",
+      "matchManagers": ["pep621"],
+      "matchUpdateTypes": ["lockFileMaintenance"],
+      "dependencyDashboardApproval": true
     },
     {
       "description": "pinDigest doesn't change a version, so no validation is needed",
@@ -159,6 +171,44 @@
       "matchManagers": ["github-actions"],
       "matchPackageNames": ["bitcart/bitcart-actions"],
       "pinDigests": false
+    }
+  ],
+  "customManagers": [
+    {
+      "description": "Tool versions in workflows and composite actions, pinned as a quoted `KEY: \"version\"` under a `# renovate:` comment",
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)\\.(?:github|forgejo)/workflows/[^/]+\\.ya?ml$/",
+        "/(^|/)action\\.ya?ml$/"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)(?: versioning=(?<versioning>\\S+))?(?: extractVersion=(?<extractVersion>\\S+))?\\s*\\n\\s*[A-Za-z0-9_-]+: \"(?<currentValue>[^\"]+)\""
+      ]
+    },
+    {
+      "description": "Docker images in workflow expressions and scripts, pinned as a single-quoted `'image:tag@digest'` under a `# renovate:` comment",
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)\\.(?:github|forgejo)/workflows/[^/]+\\.ya?ml$/",
+        "/(^|/)action\\.ya?ml$/"
+      ],
+      "matchStringsStrategy": "recursive",
+      "matchStrings": [
+        "# renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(?:\\s+versioning=(?<versioning>\\S+))?\\s*\\n[^\\n]*'[^:'\\n]+:[^'@\\n]+(?:@sha256:[a-f0-9]{64})?'",
+        "'[^:'\\n]+:(?<currentValue>[^'@\\n]+)(?:@(?<currentDigest>sha256:[a-f0-9]{64}))?'"
+      ],
+      "autoReplaceStringTemplate": "'{{{depName}}}:{{{newValue}}}{{#if newDigest}}@{{{newDigest}}}{{/if}}'"
+    },
+    {
+      "description": "Tool versions in Dockerfiles, set as `ENV KEY=version` or `ARG KEY=version` under a `# renovate:` comment",
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$/",
+        "/(^|/)([Dd]ocker|[Cc]ontainer)file[^/]*$/"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)(?: registryUrl=(?<registryUrl>\\S+))?(?: versioning=(?<versioning>\\S+))?(?: extractVersion=(?<extractVersion>\\S+))?\\s*\\n(?:ENV|ARG) [A-Za-z0-9_]+=(?<currentValue>[^\\s\"]+)"
+      ]
     }
   ],
   "postUpdateOptions": ["gomodTidy", "gomodUpdateImportPaths", "pnpmDedupe"]

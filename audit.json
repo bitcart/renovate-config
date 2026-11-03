@@ -1,0 +1,5 @@
+{
+  "description": "For repos where a merge reaches production servers or that rarely change: updates are listed on the dependency dashboard and a PR opens only when approved there, except security updates",
+  "extends": ["local>bitcart/renovate-config"],
+  "dependencyDashboardApproval": true
+}
