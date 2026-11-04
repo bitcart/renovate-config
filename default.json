@@ -138,6 +138,11 @@
       "abandonmentThreshold": null
     },
     {
+      "description": "ShellCheck is actively developed, but only releases every year or two",
+      "matchPackageNames": ["koalaman/shellcheck", "koalaman/shellcheck-precommit"],
+      "abandonmentThreshold": null
+    },
+    {
       "description": "Require dashboard approval for major updates",
       "matchUpdateTypes": ["major"],
       "dependencyDashboardApproval": true
