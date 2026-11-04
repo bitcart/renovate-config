@@ -37,7 +37,7 @@ jobs:
             -w /workspace \
             "$RENOVATE_IMAGE" \
             renovate-config-validator \
-            --strict default.json audit.json renovate.json
+            --strict default.json audit.json library.json renovate.json
 
   workflows:
     name: workflows

@@ -1,0 +1,16 @@
+{
+  "description": "For libraries, whose lock file and tooling only affect development and CI: updates run monthly, and lock file maintenance needs no approval",
+  "extends": ["local>bitcart/renovate-config"],
+  "schedule": ["* * 1 * *"],
+  "lockFileMaintenance": {
+    "schedule": ["* * 1 * *"]
+  },
+  "packageRules": [
+    {
+      "description": "A library's uv.lock never reaches its users",
+      "matchManagers": ["pep621"],
+      "matchUpdateTypes": ["lockFileMaintenance"],
+      "dependencyDashboardApproval": false
+    }
+  ]
+}
