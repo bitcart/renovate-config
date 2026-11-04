@@ -126,6 +126,12 @@
       "minimumReleaseAge": null
     },
     {
+      "description": "Skip minimum release age for packages we release, same as exclude-newer-package in uv",
+      "matchDatasources": ["pypi"],
+      "matchPackageNames": ["bitcart", "tronpy", "trontxsize", "universalasync"],
+      "minimumReleaseAge": null
+    },
+    {
       "description": "The package is not abandoned, but feature-complete",
       "matchDatasources": ["npm"],
       "matchPackageNames": ["class-variance-authority"],
