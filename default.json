@@ -56,6 +56,17 @@
       "rangeStrategy": "update-lockfile"
     },
     {
+      "description": "We set only the lower bound for cargo deps, so we want to update lockfile and leave Cargo.toml alone",
+      "matchManagers": ["cargo"],
+      "rangeStrategy": "update-lockfile"
+    },
+    {
+      "description": "These are pinned to our minijinja fork, moving them means rebasing the fork first",
+      "matchManagers": ["cargo"],
+      "matchPackageNames": ["minijinja", "minijinja-contrib"],
+      "enabled": false
+    },
+    {
       "description": "An upper bound on a python dep is deliberate, so an update past it waits for approval in its own PR instead of widening the range in the group",
       "matchManagers": ["pep621"],
       "matchCurrentValue": "/</",
